@@ -11,27 +11,26 @@ export default function MonetagAds({ config }: { config: AdConfig | null }) {
       if (loaded.current) window.location.reload();
       return;
     }
-    if (loaded.current || document.getElementById("mixpro-monetag")) {
-      loaded.current = true;
-      return;
+    if (loaded.current) return;
+    const tags = [
+      { id: "mixpro-monetag", src: config.script_url, attributes: config.attributes },
+      ...(config.additional_scripts ?? []),
+    ];
+    for (const tag of tags) {
+      if (document.getElementById(tag.id)) continue;
+      const script = document.createElement("script");
+      script.id = tag.id;
+      script.src = tag.src;
+      script.async = true;
+      Object.entries(tag.attributes).forEach(([key, value]) =>
+        script.setAttribute(key, value),
+      );
+      script.addEventListener("error", () => {
+        console.warn("Advertising script did not load; the website remains available.");
+      }, { once: true });
+      document.head.appendChild(script);
     }
-    const script = document.createElement("script");
-    script.id = "mixpro-monetag";
-    script.src = config.script_url;
-    script.async = true;
-    Object.entries(config.attributes).forEach(([key, value]) =>
-      script.setAttribute(key, value),
-    );
-    script.addEventListener(
-      "error",
-      () =>
-        console.warn(
-          "Advertising script did not load; the website remains available.",
-        ),
-      { once: true },
-    );
     loaded.current = true;
-    document.head.appendChild(script);
   }, [config, pathname]);
   useEffect(() => {
     if (!config) return;

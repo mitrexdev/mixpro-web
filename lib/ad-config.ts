@@ -4,4 +4,5 @@ export type AdConfig = {
   script_url: string;
   attributes: Record<string, string>;
   pages: string[];
+  additional_scripts?: { id: string; src: string; attributes: Record<string, string> }[];
 };

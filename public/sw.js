@@ -1,7 +1,7 @@
-// Official Monetag service worker for the configured public-site zone.
+// Official Monetag service worker for Push Notifications zone 12250716.
 self.options = {
-  "domain": "5gvci.com",
-  "zoneId": 12250715
+  "domain": "3nbf4.com",
+  "zoneId": 12250716
 };
 self.lary = "";
-importScripts('https://5gvci.com/act/files/service-worker.min.js?r=sw');
+importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw');

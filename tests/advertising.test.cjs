@@ -28,3 +28,14 @@ test('ads allow only production discovery pages, excluding playback and previews
     assert.equal(allowsAds(advertising, host, '/'), false);
   assert.equal(allowsAds({ ...advertising, enabled: false }, 'slidra.in', '/'), false);
 });
+
+test('push tag and official service worker use the same new zone', () => {
+  const push = advertising.additional_scripts[0];
+  assert.equal(push.src, 'https://nap5k.com/tag.min.js');
+  assert.equal(push.attributes['data-zone'], '12250716');
+  assert.notEqual(push.id, 'mixpro-monetag');
+  const worker = fs.readFileSync(path.join(__dirname, '..', 'public/sw.js'), 'utf8');
+  assert.match(worker, /"zoneId": 12250716/);
+  assert.match(worker, /https:\/\/3nbf4\.com\/act\/files\/service-worker\.min\.js/);
+  assert.doesNotMatch(worker, /12250715/);
+});
