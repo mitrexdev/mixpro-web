@@ -12,7 +12,7 @@ import "./watch.css";
 import "./requests.css";
 import "./motion.css";
 import { settings } from "@/lib/catalog";
-import { ads } from "@/lib/ads";
+import { advertising } from "@/lib/ads";
 import MonetagAds from "@/components/monetag-ads";
 import SiteMotion from "@/components/site-motion";
 import Header from "@/components/header";
@@ -31,10 +31,7 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  const [site, advertising] = await Promise.all([
-    settings().catch(() => null),
-    ads(),
-  ]);
+  const site = await settings().catch(() => null);
   return (
     <html lang="en" suppressHydrationWarning>
       <head>

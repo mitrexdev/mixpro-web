@@ -11,7 +11,10 @@ export default function MonetagAds({ config }: { config: AdConfig | null }) {
       if (loaded.current) window.location.reload();
       return;
     }
-    if (loaded.current) return;
+    if (loaded.current || document.getElementById("mixpro-monetag")) {
+      loaded.current = true;
+      return;
+    }
     const script = document.createElement("script");
     script.id = "mixpro-monetag";
     script.src = config.script_url;

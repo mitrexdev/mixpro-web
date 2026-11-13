@@ -1,18 +1,11 @@
-import "server-only";
-import { cache } from "react";
-import { db } from "./db";
-import { validateAds, type AdConfig } from "./ad-config";
-export const ads = cache(async (): Promise<AdConfig | null> => {
-  try {
-    const result = await db()
-      .from("site_ads")
-      .select("enabled,domain,script_url,attributes,pages")
-      .eq("id", true)
-      .single();
-    if (result.error) throw result.error;
-    return validateAds(result.data);
-  } catch {
-    console.error("Advertising configuration unavailable; ads are disabled.");
-    return null;
-  }
-});
+import type { AdConfig } from "./ad-config";
+
+// Production Monetag Vignette tag supplied by the site owner.
+// Ad delivery is configured in this repository, never through the admin database.
+export const advertising: AdConfig = {
+  enabled: true,
+  domain: "slidra.in",
+  script_url: "https://n6wxm.com/vignette.min.js",
+  attributes: { "data-zone": "12250721" },
+  pages: ["home", "explore", "series"],
+};

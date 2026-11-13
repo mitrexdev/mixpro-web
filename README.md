@@ -47,7 +47,7 @@ Real play events create records in the shared playback_events table with viewer_
 
 ## Ads and verification
 
-Monetag remains unconfigured until its real zone/script and intended format are supplied. No invented ad identifier or placeholder ad script is injected.
+Monetag uses the owner-provided Vignette tag configured in lib/ads.ts.
 
 TypeScript and production build checks are available. Ten isolated tests cover published/draft filtering, unpublished-parent bypass, guest playback, maintenance, signed-token helper behavior and disabled auth endpoints. External services are mocked; live playback and browser rendering remain unverified in this restricted environment.
 
@@ -107,6 +107,8 @@ Search requires no TVmaze API key. TVmaze/network failures expose manual entry. 
 
 Public routes use a short page-entry fade. Offscreen discovery, episode, community and footer groups reveal once on intersection, with no scroll-event polling. Buttons, fields, theme icons, confirmation states and dialogs have coordinated short transitions. Initial content remains visible without JavaScript; reduced-motion changes clear pending reveals and disable animation. Focused and printed content is never hidden. Playback remains outside the scroll-reveal groups.
 
-## Advertising controls
+## Public advertising
 
-Admin Advertising manages the shared site_ads row: enabled state, real domain, external Monetag script tag and discovery-page scope. The public loader uses only the configured hostname and excludes watch/About/account/admin pages. Entering an excluded page from an ad-loaded document forces a fresh document to remove vendor script state. The table is RLS-protected, settings-permission restricted, and mutations require a trusted origin. Migration 20261113001100_site_ads.sql was applied and the default disabled state was verified against the real database. The owner confirmed slidra.in, and zone 12250715 is enabled in the shared settings. Chromium verified scoped loading using a stubbed provider response. Live delivery remains unverified because the currently served domain does not contain this local build; publishing awaits the hosting target.
+Monetag is configured in the public repository's lib/ads.ts with the owner's Vignette zone 12250721 and exact https://n6wxm.com/vignette.min.js tag. Admin has no advertising controls or ad settings endpoint. The historical site_ads table is retained for migration compatibility and is no longer read for ad delivery.
+
+Ads run once per document on slidra.in/www.slidra.in, on Home, Explore and series pages. Watch and other routes remain excluded. Localhost and Vercel preview hosts do not load ads. Leaving an advertising page for an excluded route creates a fresh document. Provider delivery depends on its frequency limits, available inventory and browser settings; a successful script load does not guarantee an impression.
