@@ -1,0 +1,177 @@
+:root {
+  --motion-fast: 160ms;
+  --motion-base: 240ms;
+  --motion-reveal: 440ms;
+  --motion-ease: cubic-bezier(0.22, 0.68, 0.25, 1);
+}
+.page-entry {
+  animation: page-appear var(--motion-base) ease-out;
+}
+[data-motion-pending] {
+  opacity: 0;
+  translate: 0 14px;
+}
+[data-motion-visible] {
+  animation: section-arrive var(--motion-reveal) var(--motion-ease) both;
+}
+[data-motion-pending]:focus-within {
+  opacity: 1;
+  translate: none;
+}
+:is(
+  .button,
+  .icon-button,
+  .social-button,
+  .reaction-group button,
+  .nav-request-button,
+  .collection-search-trigger,
+  .pagination-direction,
+  .pagination-numbers a,
+  .title-season-tabs button,
+  .request-mode button
+) {
+  transition:
+    background-color var(--motion-fast),
+    border-color var(--motion-fast),
+    color var(--motion-fast),
+    box-shadow var(--motion-fast),
+    transform var(--motion-fast) var(--motion-ease);
+}
+:is(button:not(:disabled), .button, .pagination-numbers a):active {
+  transform: scale(0.97);
+}
+:is(input, textarea, select) {
+  transition:
+    border-color var(--motion-fast),
+    box-shadow var(--motion-fast);
+}
+:is(
+  .site-nav a,
+  .watch-footer-links a,
+  .viewing-series-label,
+  .page-back,
+  .title-breadcrumb a
+) {
+  transition: color var(--motion-fast);
+}
+:is(.request-dialog, .community-dialog)[open] {
+  animation: dialog-arrive 200ms var(--motion-ease);
+}
+dialog[open]::backdrop {
+  animation: backdrop-appear 160ms ease-out;
+}
+:is(.request-results > button, .watch-queue-item, .comment-item, .queue-item) {
+  transition:
+    background-color var(--motion-fast),
+    border-color var(--motion-fast);
+}
+:is(.request-success, .community-notice) {
+  animation: confirmation-arrive 220ms var(--motion-ease);
+}
+:is(.theme-sun, .theme-moon) {
+  animation: theme-icon-arrive 220ms var(--motion-ease);
+}
+@media (hover: hover) {
+  .title-episode-thumbnail,
+  .continue-art {
+    transition: box-shadow var(--motion-base);
+  }
+  .title-episode:hover .title-episode-thumbnail,
+  .continue-link:hover .continue-art {
+    box-shadow: 0 4px 16px #0000000a;
+  }
+  .explore-card-action > span,
+  .poster-open {
+    transition:
+      transform var(--motion-base) var(--motion-ease),
+      opacity var(--motion-base);
+  }
+  .explore-card:hover .explore-card-action > span {
+    transform: rotate(5deg);
+  }
+  .watch-footer-top:hover svg {
+    transform: translateY(-2px);
+  }
+  .watch-footer-top svg {
+    transition: transform var(--motion-fast);
+  }
+}
+@keyframes page-appear {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes section-arrive {
+  from {
+    opacity: 0;
+    translate: 0 14px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes dialog-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes backdrop-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes confirmation-arrive {
+  from {
+    opacity: 0;
+    translate: 0 5px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes theme-icon-arrive {
+  from {
+    opacity: 0.5;
+    transform: rotate(-25deg) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  [data-motion-pending],
+  [data-motion-visible] {
+    opacity: 1;
+    translate: none;
+  }
+  :is(button:not(:disabled), .button, .pagination-numbers a):active {
+    transform: none;
+  }
+}
+@media print {
+  [data-motion-pending] {
+    opacity: 1;
+    translate: none;
+  }
+}

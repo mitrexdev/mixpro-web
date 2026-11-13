@@ -1,0 +1,219 @@
+:root {
+  color-scheme: light;
+}
+.theme-sun,
+.theme-to-light {
+  display: none;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #0c0a09;
+  --paper: #1c1917;
+  --ink: #fafaf9;
+  --body: #d6d3d1;
+  --muted: #a8a29e;
+  --line: #3a3531;
+  --strong: #292524;
+  --primary: #292524;
+  --primary-active: #44403c;
+  --on-primary: #ffffff;
+  --line-strong: #57534e;
+  --success: #86efac;
+  --error: #fca5a5;
+}
+:root[data-theme="dark"] .theme-moon,
+:root[data-theme="dark"] .theme-to-dark {
+  display: none;
+}
+:root[data-theme="dark"] .theme-sun,
+:root[data-theme="dark"] .theme-to-light {
+  display: block;
+}
+:root[data-theme="dark"] .site-header {
+  background: #0c0a09f2;
+}
+:root[data-theme="dark"] :is(input, select, textarea) {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--line);
+}
+:root[data-theme="dark"]
+  :is(
+    .button:not(.button-outline):not(.button-light),
+    .genre-pills .selected,
+    .genre-pills a:hover,
+    .season-tabs button.selected
+  ) {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--line-strong);
+}
+:root[data-theme="dark"] .button:not(.button-outline):not(.button-light):hover {
+  background: var(--primary-active);
+}
+:root[data-theme="dark"] .button-outline {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+:root[data-theme="dark"] .button-outline:hover {
+  background: var(--strong);
+}
+:root[data-theme="dark"] :is(.button-light, .poster-open) {
+  background: #fff;
+  color: #0c0a09;
+}
+:root[data-theme="dark"] .poster-rating {
+  background: #1c1917f2;
+  color: var(--ink);
+}
+:root[data-theme="dark"]
+  :is(
+    .browse-filters,
+    .episode-queue,
+    .collection-search-trigger,
+    .reaction-group,
+    .social-button,
+    .community-dialog,
+    .audio-language-control,
+    .comment-compose textarea,
+    .account-card
+  ) {
+  background: var(--paper);
+  border-color: var(--line);
+}
+:root[data-theme="dark"]
+  :is(
+    .episode-row:hover,
+    .explore-card-action > span,
+    .continue-play,
+    .chapter-play
+  ) {
+  color: #0c0a09;
+}
+:root[data-theme="dark"] .episode-row:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+:root[data-theme="dark"]
+  :is(.queue-item.is-current, .reaction-group button[aria-pressed="true"]) {
+  background: var(--strong);
+  color: var(--ink);
+}
+:root[data-theme="dark"] .queue-item.is-current small {
+  color: var(--body);
+}
+:root[data-theme="dark"] .comment-avatar {
+  background: var(--strong);
+  color: var(--body);
+}
+:root[data-theme="dark"] .community-notice {
+  color: var(--success);
+}
+:root[data-theme="dark"] .community-error {
+  color: var(--error);
+}
+:root[data-theme="dark"] .skeleton {
+  background: var(--strong);
+}
+:root[data-theme="dark"]
+  :is(
+    .search-dialog,
+    .dialog-search-field,
+    .search-dialog kbd,
+    .collection-search-trigger kbd,
+    .explore-sort-links,
+    .browse-genres a,
+    .story-credits,
+    .state-frame
+  ) {
+  border-color: var(--line);
+}
+:root[data-theme="dark"] .dialog-search-field input {
+  background: transparent;
+}
+:root[data-theme="dark"] .search-dialog::backdrop,
+:root[data-theme="dark"] .community-dialog::backdrop {
+  background: #0c0a09b3;
+}
+:root[data-theme="dark"] .explore-score {
+  background: #1c1917f0;
+  color: var(--ink);
+}
+:root[data-theme="dark"] .explore-genre-tabs a.selected::after {
+  background: var(--ink);
+}
+:root[data-theme="dark"] .explore-poster-stack > div {
+  border-color: var(--canvas);
+}
+:root[data-theme="dark"] .explore-poster-stack::before {
+  opacity: 0.35;
+}
+:root[data-theme="dark"] .explore-sort-links a.selected {
+  background: var(--paper);
+  color: var(--ink);
+}
+:root[data-theme="dark"] .browse-genres a.selected {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--line-strong);
+}
+:root[data-theme="dark"] .browse-genres a:hover:not(.selected) {
+  background: var(--paper);
+}
+:root[data-theme="dark"] :is(.about-film-frame, .state-frame) {
+  background: var(--strong);
+  color: var(--body);
+  box-shadow: none;
+}
+:root[data-theme="dark"] .about-art::before {
+  opacity: 0.3;
+}
+:root[data-theme="dark"] .skip-link {
+  background: var(--ink);
+  color: var(--canvas);
+}
+:root[data-theme="dark"] .site-nav a[aria-current="page"]::after {
+  background: var(--ink);
+}
+
+/* Editorial dark treatment from the supplied DESIGN.md. */
+:root[data-theme="dark"]
+  :is(
+    .featured-content h1,
+    .series-stage h1,
+    .explore-masthead h1,
+    .about-opening h1,
+    .state-page h1
+  ) {
+  font-weight: 300;
+}
+:root[data-theme="dark"] .button {
+  border-radius: 9999px;
+}
+:root[data-theme="dark"] .reaction-group button[aria-pressed="true"] svg {
+  fill: var(--body);
+}
+:root[data-theme="dark"] .continue-progress > span {
+  background: var(--ink);
+}
+:root[data-theme="dark"] .nav-wrap {
+  height: 64px;
+  gap: 24px;
+}
+:root[data-theme="dark"] .site-nav a {
+  font-size: 15px;
+  font-weight: 500;
+}
+:root[data-theme="dark"] .site-nav {
+  gap: 24px;
+}
+:root[data-theme="dark"] .nav-actions .icon-button {
+  width: 40px;
+  height: 40px;
+}
+@media (max-width: 760px) {
+  :root[data-theme="dark"] .site-nav {
+    top: 64px;
+  }
+}
