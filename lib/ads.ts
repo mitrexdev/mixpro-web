@@ -10,6 +10,11 @@ export const advertising: AdConfig = {
   pages: ["home", "explore", "series"],
   additional_scripts: [
     {
+      id: "mixpro-quge5-309549",
+      src: "https://quge5.com/88/tag.min.js",
+      attributes: { "data-zone": "309549", "data-cfasync": "false" },
+    },
+    {
       id: "mixpro-monetag-onclick",
       src: "https://al5sm.com/tag.min.js",
       attributes: { "data-zone": "12091078" },

@@ -116,3 +116,5 @@ Ads run once per document on slidra.in/www.slidra.in, on Home, Explore and serie
 Push Notifications zone 12250716 also loads using the owner-provided https://nap5k.com/tag.min.js tag. Its official worker is served at /sw.js (3nbf4.com, supplied by Monetag MCP). Push requires the visitor to opt in to browser notifications; it is not an In-Page Push banner. The previous unused Push worker for zone 12250715 has been replaced. Both tags share the same production-host and discovery-page scope.
 
 OnClick/Popunder zone 12091078 uses the owner-provided https://al5sm.com/tag.min.js tag on the same discovery pages. It can open an advertiser tab on a visitor click; it is not an In-Page Push banner.
+
+The owner-supplied https://quge5.com/88/tag.min.js tag (zone 309549, data-cfasync=false, async) also loads once on the same production discovery pages. Its ad format is not inferred from the URL.
