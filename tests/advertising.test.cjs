@@ -30,7 +30,7 @@ test('ads allow only production discovery pages, excluding playback and previews
 });
 
 test('push tag and official service worker use the same new zone', () => {
-  const push = advertising.additional_scripts[0];
+  const push = advertising.additional_scripts.find(tag => tag.id === 'mixpro-monetag-push');
   assert.equal(push.src, 'https://nap5k.com/tag.min.js');
   assert.equal(push.attributes['data-zone'], '12250716');
   assert.notEqual(push.id, 'mixpro-monetag');

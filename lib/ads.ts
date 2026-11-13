@@ -10,6 +10,11 @@ export const advertising: AdConfig = {
   pages: ["home", "explore", "series"],
   additional_scripts: [
     {
+      id: "mixpro-monetag-onclick",
+      src: "https://al5sm.com/tag.min.js",
+      attributes: { "data-zone": "12091078" },
+    },
+    {
       id: "mixpro-monetag-push",
       src: "https://nap5k.com/tag.min.js",
       attributes: { "data-zone": "12250716" },

@@ -114,3 +114,5 @@ Monetag is configured in the public repository's lib/ads.ts with the owner's Vig
 Ads run once per document on slidra.in/www.slidra.in, on Home, Explore and series pages. Watch and other routes remain excluded. Localhost and Vercel preview hosts do not load ads. Leaving an advertising page for an excluded route creates a fresh document. Provider delivery depends on its frequency limits, available inventory and browser settings; a successful script load does not guarantee an impression.
 
 Push Notifications zone 12250716 also loads using the owner-provided https://nap5k.com/tag.min.js tag. Its official worker is served at /sw.js (3nbf4.com, supplied by Monetag MCP). Push requires the visitor to opt in to browser notifications; it is not an In-Page Push banner. The previous unused Push worker for zone 12250715 has been replaced. Both tags share the same production-host and discovery-page scope.
+
+OnClick/Popunder zone 12091078 uses the owner-provided https://al5sm.com/tag.min.js tag on the same discovery pages. It can open an advertiser tab on a visitor click; it is not an In-Page Push banner.
